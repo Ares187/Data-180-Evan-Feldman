@@ -10,7 +10,6 @@
 
 
 
-<meta name="date" content="2023-09-11" />
 
 <title>HW 1</title>
 
@@ -352,111 +351,51 @@ display: none;
 <h1 class="title toc-ignore">HW 1</h1>
 <h3 class="subtitle">Data 180, Professor Kennedy</h3>
 <h4 class="author">Evan Feldman</h4>
-<a class="author_email" href="mailto:#"><a href="mailto:XXXX@dickinson.edu" class="email">XXXX@dickinson.edu</a></a>
+<a class="author_email" href="mailto:#"><a href="mailto:feldmaev@dickinson.edu" class="email">feldmaev@dickinson.edu</a></a>
 </address>
-<h4 class="date">September 11, 2023</h4>
+<h4 class="date">`9/19/2023</h4>
 
 </div>
 
 
-<p>Make sure that you have accepted the hw invitation link, and working
-with your clone repository.</p>
-<p><strong>Due date:</strong> September 21 beginning of class.</p>
-<p><strong>Reminder:</strong> You can insert R code in your Rmd file as
-a chunk in the following way:</p>
-<pre class="r"><code># Your code goes here</code></pre>
-<p>Make sure to insert a chunk for each (sub)section of the
-assignment.</p>
-<div id="preliminary-task" class="section level2">
-<h2>Preliminary Task</h2>
-<p>Go to <a href="https://datacamp.com">datacamp.com</a> and complete
-the tutorial “Introduction to R”.</p>
+<p>#1. # A.</p>
+<p>Person &lt;- c(“Alice”, “Bob”, “Charlie”, “Denise”, “Erin”, “Frank”,
+“Gisele”, “Harry”) Preference &lt;- c(“Twitter”, “Facebook”, “Twitter”,
+“Instagram”, “Facebook”, “Twitter”, “Twitter”, “Instagram”) my_df &lt;-
+data.frame(Person, Preference) print (my_df)</p>
+<div id="b." class="section level1">
+<h1>B.</h1>
 </div>
-<div id="task-1" class="section level2">
-<h2>Task 1</h2>
-<ol style="list-style-type: lower-alpha">
-<li>Store the data below in a data frame object named
-<code>my_df</code>.</li>
-</ol>
-<table>
-<thead>
-<tr class="header">
-<th align="left">Person</th>
-<th align="left">Preference</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">Alice</td>
-<td align="left">Twitter</td>
-</tr>
-<tr class="even">
-<td align="left">Bob</td>
-<td align="left">Facebook</td>
-</tr>
-<tr class="odd">
-<td align="left">Charlie</td>
-<td align="left">Twitter</td>
-</tr>
-<tr class="even">
-<td align="left">Denise</td>
-<td align="left">Instagram</td>
-</tr>
-<tr class="odd">
-<td align="left">Erin</td>
-<td align="left">Facebook</td>
-</tr>
-<tr class="even">
-<td align="left">Frank</td>
-<td align="left">Twitter</td>
-</tr>
-<tr class="odd">
-<td align="left">Gisele</td>
-<td align="left">Twitter</td>
-</tr>
-<tr class="even">
-<td align="left">Harry</td>
-<td align="left">Instagram</td>
-</tr>
-</tbody>
-</table>
-<ol start="2" style="list-style-type: lower-alpha">
-<li><p>What are the dimensions of <code>my_df</code>?</p></li>
-<li><p>Write R code that counts the total number of users.</p></li>
-<li><p>Write R code that counts the total number of users who prefer
-Twitter.</p></li>
-<li><p>Write R code that returns what Gisele prefers.</p></li>
-</ol>
+<div id="rows-2-columns" class="section level1">
+<h1>8 rows, 2 columns</h1>
 </div>
-<div id="task-2" class="section level2">
-<h2>Task 2</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p>Create a vector named <code>my_vec</code> that includes all
-integers from 1 to 10 (inclusive).</p></li>
-<li><p>Replace the second element in <code>my_vec</code> with the number
-<code>99</code>.</p></li>
-<li><p>Write a function called <code>my_func</code> that prints
-<code>This element is greater than 5!</code> if an element in
-<code>myvec</code> is greater than 5, and
-<code>This element is NOT greater than 5!</code> otherwise.</p></li>
-</ol>
+<div id="c." class="section level1">
+<h1>C.</h1>
+<p>c &lt;- nrow(my_df) print (c)</p>
 </div>
-<div id="task-3" class="section level2">
-<h2>Task 3</h2>
-<ol style="list-style-type: lower-alpha">
-<li><p>Write a function named <code>get_fibonacci</code> that returns
-the n’th value in the <a href="https://www.mathsisfun.com/numbers/fibonacci-sequence.html">fibonacci
-sequence</a>. For example, <code>get_fibonacci(5)</code> should return
-3; <code>get_fibonacci(7)</code> should return 8 and so on.
-<em><strong>Hint:</strong> It is possible to call the same function from
-inside it. E.g., you can call <code>get_fibonacci()</code> from inside
-<code>get_fibonacci()</code>. Like inception!</em></p></li>
-<li><p>Using your function in part (a), find and return the 19th value
-in the fibonacci sequence.</p></li>
-</ol>
-<p><br> You are done! 🏁 Don’t forget to <code>commit</code> and
-<code>push</code> your .Rmd file to your Github clone repository before
-the due date. <br></p>
+<div id="d." class="section level1">
+<h1>D.</h1>
+<p>my_dfT &lt;- my_df[my_df$Preference == “Twitter”,] print
+(nrow(my_dfT))</p>
+</div>
+<div id="e." class="section level1">
+<h1>E.</h1>
+<p>my_dfG &lt;- my_df[my_df$Person == “Gisele”,] print (my_dfG[,2])</p>
+<p>#2. # A.</p>
+<p>my_vec &lt;- c(1,2,3,4,5,6,7,8,9,10) print (my_vec)</p>
+</div>
+<div id="b.-1" class="section level1">
+<h1>B.</h1>
+<p>replace(my_vec, 2, 99)</p>
+</div>
+<div id="c.-1" class="section level1">
+<h1>C.</h1>
+<p>my_func &lt;- function(my_vec,x) {</p>
+<p>if (my_vec[x] &gt; 5) { print (“This element is greater than 5!”) }
+else if (my_vec[x] &lt;= 5) { print (“This element is NOT greater than
+5!”) }</p>
+<p>}</p>
+<p>my_func(my_vec,9)</p>
 </div>
 
 
