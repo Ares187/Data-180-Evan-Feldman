@@ -8,9 +8,11 @@ date: '`9/19/2023'
 output: 
   html_document
 ---
+20/20. Good job.
+
 #1.
 # A.
-
+```{r}
 Person <- c("Alice", "Bob", "Charlie", "Denise", "Erin", "Frank", "Gisele", "Harry")
 Preference <- c("Twitter", "Facebook", "Twitter", "Instagram", "Facebook", "Twitter", "Twitter", "Instagram")
 my_df <- data.frame(Person, Preference)
@@ -73,5 +75,6 @@ get_fibonacci <- function(n) {
   }
 }
 
-get_fibonacci(20)
+get_fibonacci(5)
 
+```
