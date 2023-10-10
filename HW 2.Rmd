@@ -8,6 +8,9 @@ date: '`9/27/2023'
 output: 
   html_document
 ---
+## 15/20. You need to run you R code within the chunks. Do not upload a new .rmd file. Work within the HW folders provided to you. It makes it easier for me to find where your work is. 
+
+## Each HW should be on its own branch. 
 
 #1.
 # A.
@@ -53,6 +56,8 @@ hist(Passengers, cex.axis = 1.3, col = 'blue', xlab = 'Passengers')
 #The problem with this graph is that a histogram is generally used to show non-discrete values
 
 barplot(table(Passengers), ylab = 'frequency', xlab = 'passengers', col = c('red', 'yellow', 'darkgreen', 'blue', 'orange', 'purple'), cex.axis=1.3)
+
+## This bar plot should show the frequency of cars that carry 1 and 3 passengers as 0 (-2)
 
 #4.
 # A.
