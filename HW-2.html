@@ -10,9 +10,8 @@
 
 
 
-<meta name="date" content="2023-10-18" />
 
-<title>HW 3: Visualization, Ggplot2 &amp; Maps</title>
+<title>HW 2</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,230 +348,63 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">HW 3: Visualization, Ggplot2 &amp;
-Maps</h1>
+<h1 class="title toc-ignore">HW 2</h1>
 <h3 class="subtitle">Data 180, Professor Kennedy</h3>
-<h4 class="author">XXXX</h4>
-<a class="author_email" href="mailto:#"><a href="mailto:XXXX@dickinson.edu" class="email">XXXX@dickinson.edu</a></a>
+<h4 class="author">Evan Feldman</h4>
+<a class="author_email" href="mailto:#"><a href="mailto:feldmaev@dickinson.edu" class="email">feldmaev@dickinson.edu</a></a>
 </address>
-<h4 class="date">October 18, 2023</h4>
+<h4 class="date">`9/27/2023</h4>
 
 </div>
 
 
-<p>Make sure that you have accepted the hw invitation link, and working
-with your clone repository.</p>
-<p><strong>Due date:</strong> October 12 beginning of class.</p>
-<p><strong>Reminder:</strong> You can insert R code in your Rmd file as
-a chunk in the following way:</p>
-<pre class="r"><code># Your code goes here</code></pre>
-<p>Make sure to insert a chunk for each (sub)section of the
-assignment.</p>
-<p><strong>Theme of the assignment</strong>: This time we will practice
-visualization using ggplot2, and create cool maps. Load in the
-<code>Cars93</code> dataset by running the following code chunk:</p>
-<pre class="r"><code>library(ggplot2) # keep in mind you have to install ggplot2 first via install.packages() if it&#39;s not installed in your machine</code></pre>
-<pre><code>## Warning: package &#39;ggplot2&#39; was built under R version 4.2.3</code></pre>
-<pre class="r"><code>library(MASS)
-data(Cars93)
-head(Cars93)</code></pre>
-<pre><code>##   Manufacturer   Model    Type Min.Price Price Max.Price MPG.city MPG.highway
-## 1        Acura Integra   Small      12.9  15.9      18.8       25          31
-## 2        Acura  Legend Midsize      29.2  33.9      38.7       18          25
-## 3         Audi      90 Compact      25.9  29.1      32.3       20          26
-## 4         Audi     100 Midsize      30.8  37.7      44.6       19          26
-## 5          BMW    535i Midsize      23.7  30.0      36.2       22          30
-## 6        Buick Century Midsize      14.2  15.7      17.3       22          31
-##              AirBags DriveTrain Cylinders EngineSize Horsepower  RPM
-## 1               None      Front         4        1.8        140 6300
-## 2 Driver &amp; Passenger      Front         6        3.2        200 5500
-## 3        Driver only      Front         6        2.8        172 5500
-## 4 Driver &amp; Passenger      Front         6        2.8        172 5500
-## 5        Driver only       Rear         4        3.5        208 5700
-## 6        Driver only      Front         4        2.2        110 5200
-##   Rev.per.mile Man.trans.avail Fuel.tank.capacity Passengers Length Wheelbase
-## 1         2890             Yes               13.2          5    177       102
-## 2         2335             Yes               18.0          5    195       115
-## 3         2280             Yes               16.9          5    180       102
-## 4         2535             Yes               21.1          6    193       106
-## 5         2545             Yes               21.1          4    186       109
-## 6         2565              No               16.4          6    189       105
-##   Width Turn.circle Rear.seat.room Luggage.room Weight  Origin          Make
-## 1    68          37           26.5           11   2705 non-USA Acura Integra
-## 2    71          38           30.0           15   3560 non-USA  Acura Legend
-## 3    67          37           28.0           14   3375 non-USA       Audi 90
-## 4    70          37           31.0           17   3405 non-USA      Audi 100
-## 5    69          39           27.0           13   3640 non-USA      BMW 535i
-## 6    69          41           28.0           16   2880     USA Buick Century</code></pre>
-<div id="ggplot2" class="section level1">
-<h1>Ggplot2</h1>
-<div id="task-1" class="section level2">
-<h2>Task 1</h2>
-<p>Create a simple scatterplot using ggplot2 where x axis shows
-<code>EngineSize</code>, y axis shows <code>MPG.city</code>.</p>
-<ul>
-<li>Use blue color for your dots.</li>
-<li>Use size = 2 for the dot sizes.</li>
-<li>Use xlim and ylim to make sure your x and y axis ranges make
-sense.</li>
-<li>Add a title, subtitle, x axis label, y axis label, and a caption
-using title, subtitle, caption options inside
-<code>+ labs()</code>.</li>
-</ul>
+<p>#1. # A.</p>
+<p>library (MASS) data(Cars93)</p>
+<p>car_types &lt;- Cars93$Type table(car_types)</p>
+<p>round(table(car_types)/nrow(Cars93), 3)</p>
+<div id="b." class="section level1">
+<h1>B.</h1>
+<p>barplot(table(Cars93$Type), ylab = ‘count’, xlab = ‘Type’, col =
+c(‘red’, ‘yellow’, ‘darkgreen’, ‘blue’, ‘orange’, ‘purple’),
+cex.axis=1.3)</p>
 </div>
-<div id="task-2" class="section level2">
-<h2>Task 2</h2>
-<p>Recreate the scatterplot in Task 1. Add the following
-functionality:</p>
-<ul>
-<li>Use a different color for each car <code>Type</code>.</li>
-</ul>
+<div id="c." class="section level1">
+<h1>C.</h1>
+<p>pie(table(Cars93$Type), main = ‘Type’, col = c(‘red’, ‘yellow’,
+‘darkgreen’, ‘blue’, ‘orange’, ‘purple’), cex.axis=1.3)</p>
+<p>#2. # A.</p>
+<p>Horsepower &lt;- Cars93$Horsepower hist(Horsepower, cex.axis=1.3, col
+= ‘blue’, xlab = ‘Horsepower’)</p>
+<p>#B.</p>
+<p>hist(Horsepower, cex.axis=1.3, col = ‘blue’, breaks=seq(50,300,25),
+xlab = ‘Horsepower’)</p>
+<p>#C.</p>
+<p>#The second one more closely follows the rule of rooting X because it
+splits the graph into more parts, which equates to roughly the root of
+the number of cars</p>
+<p>#3. # A.</p>
+<p>#Passengers is Numerical discrete, because you can only have whole
+passengers</p>
+<p>Passengers &lt;- Cars93$Passengers hist(Passengers, cex.axis = 1.3,
+col = ‘blue’, xlab = ‘Passengers’)</p>
+<p>#The problem with this graph is that a histogram is generally used to
+show non-discrete values</p>
+<p>barplot(table(Passengers), ylab = ‘frequency’, xlab = ‘passengers’,
+col = c(‘red’, ‘yellow’, ‘darkgreen’, ‘blue’, ‘orange’, ‘purple’),
+cex.axis=1.3)</p>
+<p>#4. # A.</p>
+<p>Length &lt;- Cars93$Length hist(Length, cex.axis = 1.3, col = ‘blue’,
+xlab = ‘Length’)</p>
 </div>
-<div id="task-3" class="section level2">
-<h2>Task 3</h2>
-<p>Recreate the scatterplot in Task 2. Add the following
-functionality:</p>
-<ul>
-<li>Fit and overlay a smooth curve.</li>
-<li>Make the curve line red, and dashed. (Hint linetype is the option
-you can use to set line style as ‘dashed’)</li>
-</ul>
+<div id="b.-1" class="section level1">
+<h1>B.</h1>
+<p>#positively skewed</p>
 </div>
-<div id="task-4" class="section level2">
-<h2>Task 4</h2>
-<p>Create a barplot showing count of cars by <code>AirBags</code> using
-ggplot2.</p>
-<ul>
-<li><code>geom_bar()</code> is the function that creates a barplot.</li>
-<li>Use a different color for each bar.</li>
-<li>Add a title, subtitle, x axis label, y axis label, and a caption
-using title, subtitle, caption options inside
-<code>+ labs()</code>.</li>
-</ul>
-</div>
-<div id="task-5" class="section level2">
-<h2>Task 5</h2>
-<p>Recreate the barplot in Task 4 for different car <code>Origin</code>,
-such that you create one barplot for each <code>Origin</code> category
-and display all on the same graph.</p>
-<ul>
-<li>You can have <code>Origin</code> as the “x” variable by setting
-<code>x=Origin.</code></li>
-<li>Use <code>fill=AirBags</code> to get a different color (and bar) by
-<code>AirBags</code>.</li>
-<li>in <code>geom_bar(), use</code>position=‘dodge’` to have the
-barplots side by side.</li>
-</ul>
-</div>
-</div>
-<div id="maps" class="section level1">
-<h1>Maps</h1>
-<p>Load Australia’s state map data via running:</p>
-<pre class="r"><code># install the packages below by uncommenting the lines. You need to do this only once.
-#install.packages(&#39;ozmaps&#39;) # downloads the map needed
-#install.packages(&#39;sf&#39;) # package used to analyze spatial data
-library(ozmaps)</code></pre>
-<pre><code>## Warning: package &#39;ozmaps&#39; was built under R version 4.2.3</code></pre>
-<pre class="r"><code>library(sf)</code></pre>
-<pre><code>## Warning: package &#39;sf&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## Linking to GEOS 3.9.3, GDAL 3.5.2, PROJ 8.2.1; sf_use_s2() is TRUE</code></pre>
-<pre class="r"><code>au_states &lt;- ozmaps::ozmap_states # read in spatial dataframe object
-
-# Display the data
-head(au_states)</code></pre>
-<pre><code>## Simple feature collection with 6 features and 1 field
-## Geometry type: MULTIPOLYGON
-## Dimension:     XY
-## Bounding box:  xmin: 112.9211 ymin: -43.63203 xmax: 153.6299 ymax: -9.229287
-## Geodetic CRS:  GDA94
-## # A tibble: 6 × 2
-##   NAME                                                                  geometry
-##   &lt;chr&gt;                                                       &lt;MULTIPOLYGON [°]&gt;
-## 1 New South Wales   (((150.7016 -35.12286, 150.6611 -35.11782, 150.6373 -35.146…
-## 2 Victoria          (((146.6196 -38.70196, 146.6721 -38.70259, 146.6744 -38.713…
-## 3 Queensland        (((148.8473 -20.3457, 148.8722 -20.37575, 148.8515 -20.3809…
-## 4 South Australia   (((137.3481 -34.48242, 137.3749 -34.46885, 137.3805 -34.497…
-## 5 Western Australia (((126.3868 -14.01168, 126.3625 -13.98264, 126.3765 -13.974…
-## 6 Tasmania          (((147.8397 -40.29844, 147.8902 -40.30258, 147.8812 -40.325…</code></pre>
-<p>Notice that <code>NAME</code> includes the name of a state,
-<code>geometry</code> includes spatial coordinate data for each state
-polygon (area).</p>
-<div id="task-1-1" class="section level2">
-<h2>Task 1</h2>
-<p>Create a map of Australia using <code>ggplot2</code>.</p>
-</div>
-<div id="task-2-1" class="section level2">
-<h2>Task 2</h2>
-<p>Modify your map such that each state is displayed with a different
-color. (Hint: use the fill option as an aes setting with variable
-<code>NAME</code>.)</p>
-</div>
-<div id="task-3-1" class="section level2">
-<h2>Task 3</h2>
-<p>Read in the capital city dataframe showing each capital and its
-latitude and longitude information by running:</p>
-<pre class="r"><code>au_capitals &lt;- tibble::tribble( 
-  ~city,           ~lat,     ~lon,
-  &quot;Sydney&quot;,    -33.8688, 151.2093,  
-  &quot;Melbourne&quot;, -37.8136, 144.9631, 
-  &quot;Brisbane&quot;,  -27.4698, 153.0251, 
-  &quot;Adelaide&quot;,  -34.9285, 138.6007, 
-  &quot;Perth&quot;,     -31.9505, 115.8605, 
-  &quot;Hobart&quot;,    -42.8821, 147.3272, 
-  &quot;Canberra&quot;,  -35.2809, 149.1300, 
-  &quot;Darwin&quot;,    -12.4634, 130.8456, 
-)</code></pre>
-<p>Display the capitals as points on your map from Task 1. (Hint:
-combine <code>geom_sf()</code> with <code>+ geom_point()</code>)</p>
-<ul>
-<li>Use <code>col = &quot;red&quot;</code> such that points are displayed in red
-color.</li>
-<li>Use <code>size=2</code> to make points larger.</li>
-</ul>
-</div>
-<div id="task-4-1" class="section level2">
-<h2>Task 4</h2>
-<p>Let’s take a look at a different projection output. Change your map’s
-projection to epsg 3112 by adding <code>+ coord_sf()</code>. Recall the
-option that goes inside <code>coord_sf()</code> is
-<code>st_crs(4_digit_code)</code></p>
-</div>
-<div id="task-5-1" class="section level2">
-<h2>Task 5</h2>
-<p>Lastly, let’s display the same map using <code>mapview()</code>. Load
-the <code>mapview</code> package.</p>
-<pre class="r"><code>#install.packages(&#39;mapview&#39;) # interactive display
-library(mapview)</code></pre>
-<pre><code>## Warning: package &#39;mapview&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## The legacy packages maptools, rgdal, and rgeos, underpinning the sp package,
-## which was just loaded, will retire in October 2023.
-## Please refer to R-spatial evolution reports for details, especially
-## https://r-spatial.org/r/2023/05/15/evolution4.html.
-## It may be desirable to make the sf package available;
-## package maintainers should consider adding sf to Suggests:.
-## The sp package is now running under evolution status 2
-##      (status 2 uses the sf package in place of rgdal)</code></pre>
-<p>Create an interactive map of Australia using
-<code>mapview()</code></p>
-</div>
-<div id="task-6" class="section level2">
-<h2>Task 6</h2>
-<p>Let’s display the capitals on the map like before. First convert the
-<code>au_capitals</code> dataframe to spatial dataframe object by
-running:</p>
-<pre class="r"><code>capitals_geo &lt;- st_as_sf(au_capitals, coords = c(&quot;lon&quot;, &quot;lat&quot;))</code></pre>
-<p>Now add the new spatial capitals object via + (that is, you can use
-the following syntax to add a layer:
-<code>mapview() + mapview()</code>)</p>
-<ul>
-<li>You can use the option <code>col.regions=&#39;red&#39;</code> to make
-capitals appear in color red, and <code>legend=F</code> in second
-<code>mapview()</code> to remove the uninformative second set of
-legend.</li>
-</ul>
-<p>You are done! 🏁 Don’t forget to commit and push your .Rmd file to
-your Github repository before the due date.</p>
-</div>
+<div id="c.-1" class="section level1">
+<h1>C.</h1>
+<p>mean(Length) median(Length)</p>
+<p>#The mean meets my expectations, however i feel the median should be
+higher, since the data is positively skewed</p>
 </div>
 
 
