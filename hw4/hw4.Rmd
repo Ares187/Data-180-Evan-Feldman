@@ -152,6 +152,7 @@ records %>%
   summarize(avg_time = mean(time))
 
 #NTSC system has a significantly faster average time, meaning higher fps = faster races
+
 ```
 
 You are done! 🏁 Don't forget to commit and push your .Rmd file to your Github repository before the due date. (Well... the checkered flag emoji is now super relevant for this assignment!)
