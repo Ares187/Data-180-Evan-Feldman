@@ -1,0 +1,77 @@
+---
+title: "HW 2"
+subtitle: "Data 180, Professor Kennedy"
+author: 
+  name: "Evan Feldman"
+  email: "feldmaev@dickinson.edu"
+date: '`9/27/2023'
+output: 
+  html_document
+---
+## 15/20. You need to run you R code within the chunks. Do not upload a new .rmd file. Work within the HW folders provided to you. It makes it easier for me to find where your work is. 
+
+## Each HW should be on its own branch. 
+
+#1.
+# A.
+
+library (MASS)
+data(Cars93)
+
+car_types <- Cars93$Type
+table(car_types)
+
+round(table(car_types)/nrow(Cars93), 3)
+
+# B.
+
+barplot(table(Cars93$Type), ylab = 'count', xlab = 'Type', col = c('red', 'yellow', 'darkgreen', 'blue', 'orange', 'purple'), cex.axis=1.3)
+
+# C.
+
+pie(table(Cars93$Type), main = 'Type', col = c('red', 'yellow', 'darkgreen', 'blue', 'orange', 'purple'), cex.axis=1.3)
+
+#2.
+# A.
+
+Horsepower <- Cars93$Horsepower
+hist(Horsepower, cex.axis=1.3, col = 'blue', xlab = 'Horsepower')
+
+#B.
+
+hist(Horsepower, cex.axis=1.3, col = 'blue', breaks=seq(50,300,25), xlab = 'Horsepower')
+
+#C.
+
+#The second one more closely follows the rule of rooting X because it splits the graph into more parts, which equates to roughly the root of the number of cars
+
+#3.
+# A.
+
+#Passengers is Numerical discrete, because you can only have whole passengers
+
+Passengers <- Cars93$Passengers
+hist(Passengers, cex.axis = 1.3, col = 'blue', xlab = 'Passengers')
+
+#The problem with this graph is that a histogram is generally used to show non-discrete values
+
+barplot(table(Passengers), ylab = 'frequency', xlab = 'passengers', col = c('red', 'yellow', 'darkgreen', 'blue', 'orange', 'purple'), cex.axis=1.3)
+
+## This bar plot should show the frequency of cars that carry 1 and 3 passengers as 0 (-2)
+
+#4.
+# A.
+
+Length <- Cars93$Length
+hist(Length, cex.axis = 1.3, col = 'blue', xlab = 'Length')
+
+# B.
+
+#positively skewed
+
+# C.
+
+mean(Length)
+median(Length)
+
+#The mean meets my expectations, however i feel the median should be higher, since the data is positively skewed
