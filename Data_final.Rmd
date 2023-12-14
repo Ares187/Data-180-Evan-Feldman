@@ -1,0 +1,121 @@
+---
+title: "Final"
+output: html_document
+date: "2023-12-09"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+data_path <- 'C:/Users/evanf/OneDrive/Desktop/Data 180 Evan/Data-180-Evan-Feldman/loan_default_data_set.csv'
+credit_data <- read.csv(data_path)
+
+#1.
+#a.
+num_rows <- nrow(credit_data)
+num_cols <- ncol(credit_data)
+#The data has 20,000 rows and 21 columns
+
+#b.
+#The column names are Tot_balance, avg_bal_cards, credit_age, credit_age_good_account, credit_card_age, num_acc_30d_past_due_12_months, num_acc_30d_past_due_6_months, num_mortgage_currently_past_due, tot_amount_currently_past_due, num_inq_12_month, num_card_inq_24_month, num_card_12_month, num_auto_.36_month, uti_open_card, pct_over_50_uti, uti_max_credit_line, pct_card_over_50_uti, ind_XYZ, rep_income, rep_education, and def_ind
+
+#c
+#The majority of data is numerical, with one row (rep_education) having categorical data
+
+#d
+missing <- colSums(is.na(credit_data))
+percent_missing <- (missing/nrow(credit_data)) * 100
+print(percent_missing)
+#9.79% of the pct_over_50_uti column is missing and 7.795% of the rep_income column is missing
+
+#e
+#For the missing values there are 3 possible solutions. You can take any customer with a missing value and deny them for credit, if the goal is to be extremely safe. You can also assume that any missing information is a worst scenario possible, income 0, extreme debt, depending what the column is. The final option is to exclude any column without information from calculations. I believe the best option is to look at the column that is missing, and if that information is absolutely crucial, such as reported income or credit debt, then treat it as a worst scenario possible and deny them, but if that column is supplementary information, then exclude it from final calculations.
+
+#f
+#Supervised learning is the best way to go with this data set. Because this data is all numerical, its a direct calculation, and the desired output is essentially a yes or no binary response, supervised learning is appropriate.
+
+#g
+credit_data2 <- na.omit(credit_data)
+print(credit_data2)
+print(nrow(credit_data2))
+print(ncol(credit_data2))
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+
+#2.
+#a
+data_summary <- credit_data2 %>% summary()
+print(data_summary)
+
+#b
+#For num_card_inq_24_month the graph is extremely positively skewed, the mean being higher than the median and mode
+#For tot_amount_currently_past_due the graph is also extremely positively skewed
+#For credit_age the graph is bell shaped
+
+#c
+credit_data2 %>%
+  ggplot(aes(x = num_card_inq_24_month)) +
+  geom_histogram(fill = 'red', bins = 30) +
+  labs(title = 'Histogram of data column 1')
+credit_data2 %>%
+  ggplot(aes(x = tot_amount_currently_past_due)) +
+  geom_histogram(fill = 'blue', bins = 30) +
+  labs(title = 'Histogram of data column 2')
+credit_data2 %>%
+  ggplot(aes(x = credit_age)) +
+  geom_histogram(fill = 'green', bins = 30) +
+  labs(title = 'Histogram of data column 3')
+#the graphs do support the skew i found in b
+
+#d
+#1 way to convert th rep_education data to numerical data would be to use the as.numeric function to convert each word into a different number. The second method would be to use an ifelse statement, which is possible because there are only 3 possible words in rep_education, so this would only require 3 lines. option 1 would be the more efficient of the two.
+```
+
+```{r}
+#3.
+#a
+credit_data2 %>%
+  ggplot(aes(x = factor(Def_ind))) +
+  geom_bar(fill = 'red', color = 'black', width = .2) +
+  labs(title = 'Graph of the default indicator', x = 'default indicator', y = 'people') +
+  scale_x_discrete(labels = c('1' = 'default', '0' = 'no default'))
+
+#in this graph the people with a 0 in the category are those without a default on an account opened within the last 18 months, while those with a 1 have defaulted on that type of account
+
+#b
+rep_education2 <- as.numeric(factor(credit_data2$rep_education, levels = c('high_school', 'college', 'graduate', 'other')))
+credit_data2 %>%
+  ggplot(aes(x = factor(rep_education2))) +
+  geom_bar(fill = 'red', color = 'black', width = .2) +
+  labs(title = 'Graph of education level', x = 'education level', y = 'people') +
+  scale_x_discrete(labels = c('1' = 'high_school', '2' = 'college', '3' = 'graduate', '4' = 'other'))
+#This bar graph shows the levels of education of all the candidates
+
+#c
+credit_data2 %>%
+  ggplot(aes(x = rep_income)) +
+  geom_histogram(fill = 'darkgreen', color = 'black', width = .2, bins = 50) +
+  labs(title = 'Graph of reported income', x = 'income', y = 'people') +
+  scale_x_continuous(
+    breaks = c(100000, 200000, 300000),
+    labels = c('100k', '200k', '300k'),
+  )
+
+#d
+credit_data2 %>%
+  ggplot(aes(x = tot_balance)) +
+  geom_boxplot(fill = 'darkgreen', color = 'black') +
+  labs(title = 'graph of total balance', x = 'balance')
+
+summary_stats <- summary(credit_data2$tot_balance)
+print(summary_stats)
+
+filtered <- credit_data2[!(credit_data2$tot_balance >= 45957 & credit_data2$tot_balance <= 169117), ]
+#The 5 number summary of the variable is min = 0, 1st quart = 92,142, median = '107740', 3rd quart = 122932, and max = 200000. There are outliers, anyone outside the range of 45,957 to 169,117 is an outlier and there are 88 of them
+```
+
