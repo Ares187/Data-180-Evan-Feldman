@@ -3,13 +3,13 @@ title: "Final"
 output: html_document
 date: "2023-12-09"
 ---
-
+38/40. Good job. 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r}
-data_path <- 'C:/Users/evanf/OneDrive/Desktop/Data 180 Evan/Data-180-Evan-Feldman/loan_default_data_set.csv'
+data_path <- "C:/Users/rodge/OneDrive/Desktop/DATA 180 -Intoduction to Data Science/DATA-180-Introduction-to-Data-Science--Section-2/data/loan_default_data_set.csv"
 credit_data <- read.csv(data_path)
 
 #1.
@@ -33,6 +33,8 @@ print(percent_missing)
 #e
 #For the missing values there are 3 possible solutions. You can take any customer with a missing value and deny them for credit, if the goal is to be extremely safe. You can also assume that any missing information is a worst scenario possible, income 0, extreme debt, depending what the column is. The final option is to exclude any column without information from calculations. I believe the best option is to look at the column that is missing, and if that information is absolutely crucial, such as reported income or credit debt, then treat it as a worst scenario possible and deny them, but if that column is supplementary information, then exclude it from final calculations.
 
+
+# this question was asking how you deal with imputing missing data in general (-1)
 #f
 #Supervised learning is the best way to go with this data set. Because this data is all numerical, its a direct calculation, and the desired output is essentially a yes or no binary response, supervised learning is appropriate.
 
