@@ -8,6 +8,7 @@ date: '`r format(Sys.Date(), "%B %d, %Y")`'
 output: 
   html_document
 ---
+13/20. 
 
 **Due date:** November 2 beginning of class.
 
@@ -87,6 +88,7 @@ print(D)
 
 Find (by hand) the inter-group distance between A = $\{O_1, O_4\}$ and B = $\{O_2, O_3, O_5\}$ (where $O_n$ denotes the $n$th object in the distance matrix **D**) using
 
+The nearest neighbor cannot be further than the furthest neighbor.
 a) Nearest-neighbor
 
 10
